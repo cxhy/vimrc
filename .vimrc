@@ -149,6 +149,7 @@ Plug 'SirVer/ultisnips'
 " 随键而全的、支持模糊搜索的、高速补全的插件
 " YCM 由 google 公司搜索项目组的软件工程师 Strahinja Val Markovic 所开发
 Plug 'Valloric/YouCompleteMe'
+Plug 'ternjs/tern_for_vim'
 
 " 根据类声明自动生成类实现的代码框架
 Plug 'derekwyatt/vim-protodef'
@@ -580,6 +581,18 @@ let g:NERDTrimTrailingWhitespace = 1
 " highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
 " 选中项
 " highlight PmenuSel term=bold ctermbg=darkred guibg=#13354A
+
+" 比较喜欢用tab来选择补全...
+function! MyTabFunction ()
+    let line = getline('.')
+    let substr = strpart(line, -1, col('.')+1)
+    let substr = matchstr(substr, "[^ \t]*$")
+    if strlen(substr) == 0
+        return "\<tab>"
+    endif
+    return pumvisible() ? "\<c-n>" : "\<c-x>\<c-o>"
+endfunction
+inoremap <tab> <c-r>=MyTabFunction()<cr>
 
 
 let g:ycm_filetype_blacklist = {
