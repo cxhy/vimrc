@@ -1,6 +1,9 @@
 " 定义快捷键的前缀，即 <Leader>
 let mapleader=";"
 
+" 打开文件时，按照 viminfo 保存的上次关闭时的光标位置重新设置光标
+au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+
 " >>>=========文件类型侦测============
 " 文件类型侦测
 
@@ -205,6 +208,9 @@ Plug 'junegunn/vim-easy-align'
 "vim-javascript
 Plug 'pangloss/vim-javascript'
 
+"在vim里面执行shell
+Plug 'Shougo/vimshell.vim'
+
 Plug 'othree/html5.vim'
 call plug#end()            " 插件列表结束
 filetype plugin indent on  " 根据侦测到的不同类型加载对应的插件
@@ -266,8 +272,9 @@ set number        " 开启行号显示
 set cursorline    " 高亮显示当前 - 行
 set cursorcolumn  " 高亮显示当前 - 列
 set hlsearch      " 高亮显示搜索结果
-" set nocompatible  " 不要使用vi的键盘模式，而是vim自己的 
-" set encoding=utf-8
+set nocompatible  " 不要使用vi的键盘模式，而是vim自己的 
+set encoding=utf-8
+set nowrapscan     "禁止循环搜索
 
 " <<<<<<<<<<
 
