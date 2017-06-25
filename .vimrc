@@ -212,6 +212,13 @@ Plug 'pangloss/vim-javascript'
 Plug 'Shougo/vimshell.vim'
 
 Plug 'othree/html5.vim'
+
+"python提示代码功能插件
+Plug 'davidhalter/jedi-vim'
+"显示缩紧线
+Plug 'Yggdroot/indentLine'
+
+Plug 'vim-scripts/python.vim'
 call plug#end()            " 插件列表结束
 filetype plugin indent on  " 根据侦测到的不同类型加载对应的插件
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -362,6 +369,9 @@ nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 
 " <<<<<<<<<<
 
+"indentLine 插件配置缩进指示线"
+let g:indentLine_char='┆'
+let g:indentLine_enabled = 1
 
 
 " >>>>>>>>>>
@@ -827,5 +837,6 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign):P
 
 "<<<<<<<<<<<<<<<<<
+map <leader>il :IndentLinesToggle<CR>
 
 
